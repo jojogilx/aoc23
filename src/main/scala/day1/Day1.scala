@@ -1,19 +1,9 @@
 package day1
 
 
-import scala.util.control.NonFatal
+import utils.Utils._
 
 object Day1 {
-
-  private def getLines(file: String): List[String] = {
-    val source = io.Source.fromFile(file)
-    try{ source.getLines.toList}
-    catch {
-      case NonFatal(_) => List()
-    }
-    finally source.close()
-  }
-
 
   private def findDigits(line : String): Int = {
     line.filter(_.isDigit) match {
@@ -22,7 +12,6 @@ object Day1 {
       case x => (x.head.toString+x.last.toString).toInt
     }
   }
-
 
   def sumAllLines(list: List[String], f: String => Int): Int = {
     list.map(line =>{f(line)}).sum
@@ -52,8 +41,8 @@ object Day1 {
   }
 
   def main(args: Array[String]): Unit = {
-    println(sumAllLines(getLines("src/main/scala/day1/input1.txt"), findDigits))
-    println(sumAllLines(getLines("src/main/scala/day1/input1.txt"), findFirstAndLastDigit))
+    println(sumAllLines(getLines("day1/input1.txt"), findDigits))
+    println(sumAllLines(getLines("day1/input1.txt"), findFirstAndLastDigit))
   }
 
 
